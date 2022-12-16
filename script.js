@@ -1,108 +1,12 @@
 "use strict";
 
-const a = document.querySelector(".a").addEventListener("click", () => {
-  const la = "a";
-  console.log(la);
+const buttons = document.querySelectorAll("button");
+buttons.forEach((b) => {
+  b.addEventListener("click", () => {
+    jeu();
+  });
 });
-const z = document.querySelector(".z").addEventListener("click", () => {
-  const lz = "z";
-  console.log(lz);
-});
-const e = document.querySelector(".e").addEventListener("click", () => {
-  const le = "e";
-  console.log(le);
-});
-const r = document.querySelector(".r").addEventListener("click", () => {
-  const lr = "r";
-  console.log(lr);
-});
-const t = document.querySelector(".t").addEventListener("click", () => {
-  const lt = "t";
-  console.log(lt);
-});
-const y = document.querySelector(".y").addEventListener("click", () => {
-  const ly = "y";
-  console.log(ly);
-});
-const u = document.querySelector(".u").addEventListener("click", () => {
-  const lu = "u";
-  console.log(lu);
-});
-const i = document.querySelector(".i").addEventListener("click", () => {
-  const li = "i";
-  console.log(li);
-});
-const o = document.querySelector(".o").addEventListener("click", () => {
-  const lo = "o";
-  console.log(lo);
-});
-const p = document.querySelector(".p").addEventListener("click", () => {
-  const lp = "p";
-  console.log(lp);
-});
-const q = document.querySelector(".q").addEventListener("click", () => {
-  const lq = "q";
-  console.log(lq);
-});
-const s = document.querySelector(".s").addEventListener("click", () => {
-  const ls = "s";
-  console.log(ls);
-});
-const d = document.querySelector(".d").addEventListener("click", () => {
-  const ld = "d";
-  console.log(ld);
-});
-const f = document.querySelector(".f").addEventListener("click", () => {
-  const lf = "f";
-  console.log(lf);
-});
-const g = document.querySelector(".g").addEventListener("click", () => {
-  const lg = "g";
-  console.log(lg);
-});
-const h = document.querySelector(".h").addEventListener("click", () => {
-  const lh = "h";
-  console.log(lh);
-});
-const j = document.querySelector(".j").addEventListener("click", () => {
-  const lj = "j";
-  console.log(lj);
-});
-const k = document.querySelector(".k").addEventListener("click", () => {
-  const lk = "k";
-  console.log(lk);
-});
-const l = document.querySelector(".l").addEventListener("click", () => {
-  const ll = "l";
-  console.log(ll);
-});
-const m = document.querySelector(".m").addEventListener("click", () => {
-  const lm = "m";
-  console.log(lm);
-});
-const w = document.querySelector(".w").addEventListener("click", () => {
-  const lw = "w";
-  console.log(lw);
-});
-const x = document.querySelector(".x").addEventListener("click", () => {
-  const lx = "x";
-  console.log(lx);
-});
-const c = document.querySelector(".c").addEventListener("click", () => {
-  const lc = "c";
-  console.log(lc);
-});
-const v = document.querySelector(".v").addEventListener("click", () => {
-  const lv = "v";
-  console.log(lv);
-});
-const b = document.querySelector(".b").addEventListener("click", () => {
-  const lb = "b";
-  console.log(lb);
-});
-const n = document.querySelector(".n").addEventListener("click", () => {
-  const ln = "n";
-  console.log(ln);
+document.addEventListener("keydown", (e) => {
   jeu();
 });
 const nbLetter = document.querySelector(".nbLetter");
