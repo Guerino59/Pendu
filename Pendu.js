@@ -16,6 +16,7 @@ export default class Pendu {
     this.nbLetter = document.querySelector(".nbLetter");
     this.essais = document.querySelector(".nbError");
     this.mot = document.querySelector(".mot");
+    this.img = document.querySelector(".anim");
     this.words = [
       "pizza",
       "apple",
@@ -29,7 +30,7 @@ export default class Pendu {
     this.randomWord();
     this.arrLetter = [];
     this.nbErr = 0;
-    this.nbLetter.textContent = `Le mot contient ${this.findingWord.length} lettres`;
+    this.nbLetter.textContent = `Mot : ${this.findingWord.length} lettres`;
     this.push();
     this.create();
   }
@@ -85,6 +86,8 @@ export default class Pendu {
       e.style.pointerEvents = "none";
       e.style.backgroundColor = "rgba(204,29,29,0.5)";
       this.nbErr++;
+      this.img.style.background = `url(./img-pendu/Le-Pendu${this.nbErr}.png)`;
+      this.img.style.backgroundSize = "cover";
       this.essais.textContent = `${this.nbErr} erreurs`;
     }
   }
