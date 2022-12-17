@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hangman Game</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #2a2a2a;
+        color: #fafafa;
+      }
+      #word {
+        font-size: 4em;
+        padding: 0.3em;
+        text-align: center;
+        margin-top: 2em;
+      }
+      #wrong-guesses {
+        font-size: 2em;
+        padding: 0.3em;
+        text-align: center;
+        margin-top: 0.5em;
+      }
+      #guess {
+        font-size: 2em;
+      }
+      #submit {
+        font-size: 2em;
+      }
+      #hangman {
+        width: 5em;
+        height: 7em;
+        margin: 0 auto;
+        margin-top: 2em;
+        background-image: url(./images/hangman.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      #result {
+        font-size: 2em;
+        padding: 0.3em;
+        text-align: center;
+        margin-top: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="word"></div>
+    <div id="wrong-guesses"></div>
+    <div id="hangman"></div>
+    <div id="result"></div>
+    <div>
+      <input type="text" id="guess" />
+      <button id="submit">Guess</button>
+    </div>
+    <script>
+      let word = "";
+      let wrongGuesses = [];
+      let result = document.querySelector("#result");
+      let wordElement = document.querySelector("#word");
+      let wrongGuessesElement = document.querySelector("#wrong-guesses");
+      let guessElement = document.querySelector("#guess");
+      let submitElement = document.querySelector("#submit");
+      let hangmanElement = document.querySelector("#hangman");
+      let numWrongGuesses = 0;
+      let numCorrectGuesses = 0;
+      let words = [
+        "pizza",
+        "apple",
+        "banana",
+        "strawberry",
+        "orange",
+        "pineapple",
+        "grapes"
+      ];
+
+      // select random word
+      function randomWord() {
+        word = words[Math.floor(Math.random() * words.length)];
+      }
+
+      // display dashes for word
+      function displayWord() {
+        let dashes = "";
+        for (let i = 0; i < word.length; i++) {
+          dashes += "-";
+        }
+        wordElement.innerHTML = dashes;
+      }
+
+      // display wrong guesses
+      function displayWrongGuesses() {
+        let wrongGuessesString = "";
+        for (let i = 0; i < wrongGuesses.length; i++) {
+          wrongGuessesString += wrongGuesses[i] + " ";
+        }
+        wrongGuessesElement.innerHTML = wrongGuessesString;
+      }
+
+      // guess letter
+      function guessLetter() {
+        let letter = guessElement.value;
+        let isCorrect = false;
+
+        // check if letter is in word
+        for (let i = 0; i < word.length; i++) {
+          if (word[i] === letter) {
+            isCorrect = true;
+            numCorrectGuesses++;
+            let dashes = wordElement.innerHTML.split("");
+            dashes[i] = letter;
+            wordElement.innerHTML = dashes.join("");
+          }
+        }
+
+        // if letter is wrong
+        if (!isCorrect) {
+          wrongGuesses.push(letter);
+          numWrongGuesses++;
+          hangmanElement.style.backgroundPosition =
+            "-" + (numWrongGuesses * 200) + "px 0px";
+        }
+
+        // check if game is over
+        if (numWrongGuesses === 6) {
+          result.innerHTML = "You lost!";
+          submitElement.disabled = true;
+        }
+        if (numCorrectGuesses === word.length) {
+          result.innerHTML = "You won!";
+          submitElement.disabled = true;
+        }
+
+        // update display
+        displayWrongGuesses();
+        guessElement.value = "";
+      }
+
+      // start game
+      function startGame() {
+        randomWord();
+        displayWord();
+        displayWrongGuesses();
+      }
+
+      // events
+      submitElement.addEventListener("click", guessLetter);
+      window.addEventListener("load", startGame);
+    </script>
+  </body>
+</html>
