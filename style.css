@@ -47,11 +47,17 @@ body{
 }
 
 .clavier{
+    display: block;
+    margin: auto;
     height: 40vh;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
+}
+.w{
+    grid-column: 3;
 }
 .lettre{
     margin: 10px;
@@ -71,5 +77,32 @@ body{
     }
     to{
         border: solid 10px green
+    }
+}
+.restart{
+    position:absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid black;
+    padding: 20px 35px;
+    font-weight: bold;
+    font-size: 3rem ;
+    cursor: pointer;
+    transition: background-color 0.2s linear;
+    transition: top 1s linear;
+    animation: padd 1s linear infinite;
+    z-index: 1000000;
+}
+.restart:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+@keyframes padd {
+    from {
+        padding: 20px 35px;
+    }
+    to{
+        padding: 10px 25px;
     }
 }
